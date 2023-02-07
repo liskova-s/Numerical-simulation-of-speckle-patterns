@@ -11,3 +11,8 @@ _the main script, more information provided below_
 
 ## Simulation script  
 
+## Example output figure  
+<p align="center">
+  
+   <img width="460" src="./img/example_figure.png">
+</p>
