@@ -1,1 +1,1 @@
-# Numerical-simulation-of-speckle-noise
+# Numerical simulation of speckle patterns
