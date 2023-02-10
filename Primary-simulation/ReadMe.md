@@ -18,6 +18,9 @@ _the main script, more information provided below_
 </p>
   
 ## Correlation results  
-<p align="left">
-   <img width="460" src="./img/example_figure.png">
+
+<p float="left">
+  <img width="400" src="./img/correlation_matrix.png" width="100" />
+  <img width="400" src="./img/correlation_matrix_planar_wave.png" width="100" />
+  <img width="400" src="./img/correlation_degree_plot.png" width="100" />
 </p>
