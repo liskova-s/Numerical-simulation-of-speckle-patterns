@@ -1,5 +1,6 @@
  function cropped = crop_to_slm_size(wave,slm_resolution, beam_center,x_coords,y_coords,z_coords)
-        
+        % phi: phase of source
+        % source plane: x,y,z coords
         middle_pixel = slm_resolution/2; % reference middle pixel of slm plane
         shift =  beam_center- middle_pixel-1;
         c = slm_resolution/2-shift;

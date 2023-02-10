@@ -1,5 +1,5 @@
 function [X,Y,Z] = coord_init(pixels,init_size,L_coord,k)
-    if abs(k(1)) <1e-10 
+    if abs(k(1)) <1e-10 %|| abs(L_coord(1))<1e-13
         w = [1,0,0];
     else 
         if abs(k(2)) <1e-10 
