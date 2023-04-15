@@ -5,6 +5,7 @@ P = ones(size(X));
 Rsq = X.^2+Y.^2;
 % aperture mask
 P(Rsq>lens_diam^2) = 0; 
+
 trans_function_Lens = P.*exp(-1i*k*(X.^2+Y.^2)./(2*lens_f));
 u2 = trans_function_Lens.*u1;
 end

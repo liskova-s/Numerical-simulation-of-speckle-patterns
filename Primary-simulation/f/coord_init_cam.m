@@ -1,4 +1,4 @@
-function [X,Y,Z] = coord_init(pix_size,net_size,center,n)
+function [X,Y,Z] = coord_init_cam(pix_size, net_size, center, n)
     % pix_size  size of pixels
     % net_size  size of modeled net in pixels
     % center    coordinates of center of the net
@@ -13,14 +13,12 @@ function [X,Y,Z] = coord_init(pix_size,net_size,center,n)
     end
     
     % Check for division by zero in calculation of w(2)
-    if abs(n(1)) < 1e-10 || abs(center(1)) < 1e-13
+    if abs(n(1)) < 1e-10 
         w = [1,0,0];
     elseif abs(n(2)) < 1e-10 
         w = [0,1,0];
     else
-        w = [1;
-             (-n(1)-n(3)*center(3)/center(1))/n(2); 
-              center(3)/center(1)];
+        w = [1;             (-n(1)-n(3)*center(3)/center(1))/n(2);               center(3)/center(1)];
         wdot = dot(w,w);
         if wdot < 0 || isnan(wdot)
             error('Invalid input parameter(s)');
@@ -41,17 +39,18 @@ function [X,Y,Z] = coord_init(pix_size,net_size,center,n)
     a = a(2:2:end);
     b = -net_size(2)/2*pix_size:pix_size/2:net_size(2)/2*pix_size;
     b = b(2:2:end);
-      if c(3)<0
-          c=-c;
-      end
+    
+    % Fix the orientation of the plane by ensuring c(3) is positive
+    if c(3) < 0
+        c = -c;
+    end
+    
     [P,Q] = meshgrid(a,b);
     X = center(1)+w(1)*P+c(1)*Q; % Compute the corresponding cartesian coordinates
-    Y = center(2)+w(2)*P+c(2)*Q; % using the two vectors in w
-
+    Y = center(2)+w(2)*P+c(2)*Q; % using the
     if (abs(n(1)) < 1e-10 && abs(n(2)) < 1e-10)
         Z = center(3)*ones(size(Y));
     else
         Z = center(3)+w(3)*P+c(3)*Q;  
     end
 end
-
