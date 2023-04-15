@@ -13,7 +13,7 @@ lens_beam_center = [0,0];       % [mm] x,y distance of the beam center from the 
 crosstalk_sigma = 2;            % sigma of Gaussian filter used to model pixel crosstalk
 cam_angle = 0;                  % [deg] incident angle on the camera (gamma)
 cam_plane = 0.1;             % [m] distance of observed plane from the lens
-phase_mask = cell2mat(struct2cell(load('phase_mask_rough.mat')));  % 1080x1920 matrix with real values 0 - 2pi
+phase_mask = cell2mat(struct2cell(load('example_phase_mask.mat')));  % 1080x1920 matrix with real values 0 - 2pi
 
 % EVALUATION
 speckle_plane = sim2_generate_speckles(slm_angle,slm_beam_center,aperture,lens_angle,lens_beam_center,crosstalk_sigma,cam_angle,cam_plane,phase_mask);
