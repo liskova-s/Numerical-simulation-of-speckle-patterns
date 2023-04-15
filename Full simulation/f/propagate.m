@@ -4,8 +4,6 @@ function conv = propagate(wave,lambda, x_coords,y_coords,z)
     rSq = x_coords.^2+y_coords.^2+z.^2;
     h = z.*exp(1i*kAmp*sqrt(rSq))./(1i.*lambda.*rSq);
     maximum = max(wave,[],'all');
-
-%%
     % size + padding
     [m,n] = size(wave);
     [mb,nb] = size(h);
@@ -14,7 +12,6 @@ function conv = propagate(wave,lambda, x_coords,y_coords,z)
 
     % pad, multiply and transform back
      C = ifft2(fft2(wave,mm,nn).* fft2(h,mm,nn));
-
     padC_m = ceil((mb-1)./2);
     padC_n = ceil((nb-1)./2);
     conv = C(padC_m+1:m+padC_m, padC_n+1:n+padC_n);
